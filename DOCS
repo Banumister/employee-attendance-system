@@ -1,1 +1,22 @@
+# ER Diagram (Text Overview)
 
+- DEPARTMENTS (DEPT_ID) ⟶ EMPLOYEES (DEPT_ID)
+- EMPLOYEES (EMPLOYEE_ID) ⟶ ATTENDANCE (EMPLOYEE_ID)
+- EMPLOYEES (EMPLOYEE_ID) ⟶ LEAVE_REQUESTS (EMPLOYEE_ID)
+
+- ATTENDANCE table logs check-in/out, and leave records
+- LEAVE_REQUESTS triggers ATTENDANCE entries upon approval
+
+DIAGRAM:
+
+┌──────────────────┐          ┌───────────────────┐          ┌─────────────────────┐
+│     EMPLOYEES    │          │     ATTENDANCE    │          │    LEAVE_REQUESTS    │
+├──────────────────┤          ├───────────────────┤          ├─────────────────────┤
+│ PK: EMPLOYEE_ID  │◄───┐     │ PK: ATTENDANCE_ID │     ┌────│ PK: LEAVE_ID        │
+│    NAME          │    │     │ FK: EMPLOYEE_ID   │◄────┘    │ FK: EMPLOYEE_ID     │
+│    DEPARTMENT    │    │     │    DATE           │          │    START_DATE       │
+│    HIRE_DATE     │    │     │    CHECK_IN_TIME  │          │    END_DATE         │
+└──────────────────┘    │     │    CHECK_OUT_TIME │          │    REASON           │
+                        │     │    STATUS         │          │    STATUS           │
+                        │     └───────────────────┘          └─────────────────────┘
+                        └─────────────────────────────────────────────┘
