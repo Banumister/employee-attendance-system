@@ -1,8 +1,0 @@
-# ER Diagram (Text Overview)
-
-- DEPARTMENTS (DEPT_ID) ⟶ EMPLOYEES (DEPT_ID)
-- EMPLOYEES (EMPLOYEE_ID) ⟶ ATTENDANCE (EMPLOYEE_ID)
-- EMPLOYEES (EMPLOYEE_ID) ⟶ LEAVE_REQUESTS (EMPLOYEE_ID)
-
-- ATTENDANCE table logs check-in/out, and leave records
-- LEAVE_REQUESTS triggers ATTENDANCE entries upon approval
