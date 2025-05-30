@@ -90,6 +90,17 @@ Leave requests with varying status
 🖼️ ER Diagram
 You can find the ER structure here:
 📁 docs/er_diagram.png
+┌──────────────────┐          ┌───────────────────┐          ┌─────────────────────┐
+│     EMPLOYEES    │          │     ATTENDANCE    │          │    LEAVE_REQUESTS    │
+├──────────────────┤          ├───────────────────┤          ├─────────────────────┤
+│ PK: EMPLOYEE_ID  │◄───┐     │ PK: ATTENDANCE_ID │     ┌────│ PK: LEAVE_ID        │
+│    NAME          │    │     │ FK: EMPLOYEE_ID   │◄────┘    │ FK: EMPLOYEE_ID     │
+│    DEPARTMENT    │    │     │    DATE           │          │    START_DATE       │
+│    HIRE_DATE     │    │     │    CHECK_IN_TIME  │          │    END_DATE         │
+└──────────────────┘    │     │    CHECK_OUT_TIME │          │    REASON           │
+                        │     │    STATUS         │          │    STATUS           │
+                        │     └───────────────────┘          └─────────────────────┘
+                        └─────────────────────────────────────────────┘
 
 
 
