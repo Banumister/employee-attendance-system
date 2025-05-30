@@ -1,3 +1,38 @@
+
+-----CREATING PROCEDURE TO MARK_ATTENDACE------
+
+CREATE OR REPLACE PROCEDURE mark_attendance (
+    p_employee_id IN NUMBER,
+    p_date IN DATE,
+    p_checkin IN TIMESTAMP,
+    p_checkout IN TIMESTAMP,
+    p_status IN VARCHAR2
+) AS
+BEGIN
+    INSERT INTO ATTENDANCE (
+        ATTENDANCE_ID,
+        EMPLOYEE_ID,
+        ATTENDANCE_DATE,
+        CHECK_IN_TIME,
+        CHECK_OUT_TIME,
+        STATUS
+    ) VALUES (
+        ATTENDANCE_SEQ.NEXTVAL,
+        p_employee_id,
+        p_date,
+        p_checkin,
+        p_checkout,
+        p_status
+    );
+EXCEPTION
+    WHEN DUP_VAL_ON_INDEX THEN
+        DBMS_OUTPUT.PUT_LINE('Attendance already marked for this employee and date.');
+END;
+/
+
+
+
+-- PROCEDURE FOR AUDITING THE MONTHLY ATTENDANCE REPORT FOR THE EMPLOYEES --
 CREATE OR REPLACE PROCEDURE get_monthly_attendance_report (
     p_employee_id IN NUMBER,
     p_month IN NUMBER,
@@ -21,6 +56,8 @@ BEGIN
 END;
 /
 
+--- PROCEDURE FOR TO CHECK THE LIST OF ABSENTEES BY USING DATE --
+    
 CREATE OR REPLACE PROCEDURE list_absentees_by_date (
     p_date IN DATE
 )
